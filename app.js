@@ -21,6 +21,11 @@ db.connect((err) => {
 const app = express()
 
 // Create DB
+app.get('/', (req, res) => {
+  res.status(200).json({ message: 'ok' })
+})
+
+// Create DB
 app.get('/createdb', (req, res) => {
   let sql = 'CREATE DATABASE nodemysql'
 
@@ -105,7 +110,7 @@ app.get('/getpost/:id', (req, res) => {
       throw err
     }
 
-    console.log('result', result)
+    console.log('result', result[0].body)
 
     res.send('Post fetched ...')
   })
